@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HoneGuard – SSH Honeypot Dashboard</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom JS -->
+    <script defer src="/frontend/dashboard.js"></script>
+
+    <style>
+        /* subtle scanline + grid background */
+        body {
+            background:
+                radial-gradient(circle at top, rgba(34,211,238,0.12), transparent 60%),
+                radial-gradient(circle at bottom, rgba(56,189,248,0.18), transparent 55%),
+                #020617;
+        }
+        .noise-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        .noise-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.20;
+            pointer-events: none;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+            mix-blend-mode: soft-light;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen text-slate-100">
+    <!-- Header -->
+    <header class="border-b border-cyan-500/30 bg-slate-950/90 shadow-lg shadow-cyan-500/20 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/40">
+                    <i data-lucide="shield" class="w-6 h-6 text-slate-950"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">HoneGuard</h1>
+                    <p class="text-xs text-slate-400 uppercase tracking-[0.2em]">SSH Honeypot Monitoring Console</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/40">
+                    <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-semibold text-emerald-300">LIVE CAPTURE</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-8 noise-bg">
+        <div class="relative">
+            <div class="pointer-events-none absolute -inset-1 rounded-3xl border border-cyan-500/10"></div>
+
+            <!-- Stats Grid -->
+            <div id="statsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 mt-2"></div>
+
+            <!-- Tabs + Content -->
+            <div class="bg-slate-900/80 rounded-2xl shadow-xl shadow-cyan-500/10 border border-slate-800">
+                <div class="border-b border-slate-800 px-6 flex space-x-6" id="tabs"></div>
+                <div class="p-6" id="tabContent"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
