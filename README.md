@@ -41,36 +41,33 @@ You will need two separate terminal windows to run the project (one for the Hone
 Terminal 1: Start the SSH Honeypot
 This script runs the fake SSH server that listens for incoming connections.
 
-Bash
-
 # 1. Enter the directory
 cd ssh-honeypot
 
 # 2. Activate the Virtual Environment
-# Windows:
+## Windows:
 .\venv\Scripts\activate
-# Linux/Mac:
-# source venv/bin/activate
+## Linux/Mac:
+source venv/bin/activate
 
 # 3. Start the Honeypot
 python honeypot.py
 Terminal 2: Start the API & Backend
 This script handles the data processing and WebSocket connections for the dashboard.
 
-Bash
-
-# 1. Enter the API directory
+## 1. Enter the API directory
 cd ssh-honeypot/api
 
 # 2. Activate the Virtual Environment (if not already active)
-# Windows:
+## Windows:
 ..\venv\Scripts\activate
-# Linux/Mac:
-# source ../venv/bin/activate
+## Linux/Mac:
+source ../venv/bin/activate
 
 # 3. Run the Uvicorn Server
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 🖥️ Access the Dashboard
 Once both terminals are running, open your web browser and navigate to:
+127.0.0.1:8080/
 
 👉 http://127.0.0.1:8080
